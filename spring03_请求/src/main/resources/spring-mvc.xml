@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+    <context:component-scan base-package="com.cw"/>
+
+
+    <!-- TODO 配置方式实现日期格式化转换 -->
+    <!-- &lt;!&ndash;5.启用自定义Converter&ndash;&gt;
+     <mvc:annotation-driven conversion-service="conversionService"/>
+
+     &lt;!&ndash;声明自定义的转换格式并覆盖系统转换格式&ndash;&gt;
+     &lt;!&ndash;1.设定格式类型Converter，注册为Bean，受SpringMVC管理&ndash;&gt;
+     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+         &lt;!&ndash;2.自定义Converter格式类型设定，该设定使用的是同类型覆盖的思想&ndash;&gt;
+         <property name="formatters">
+             &lt;!&ndash;3.使用set保障相同类型的转换器仅保留一个，避免冲突&ndash;&gt;
+             <set>
+                 &lt;!&ndash;4.设置具体的格式类型&ndash;&gt;
+                 <bean class="org.springframework.format.datetime.DateFormatter">
+                     &lt;!&ndash;5.类型规则&ndash;&gt;
+                     <property name="pattern" value="yyyy-MM-dd"/>
+                 </bean>
+             </set>
+         </property>
+     </bean>-->
+
+    <!-- TODO 注解方式实现日期格式化转换 -->
+    <!--<mvc:annotation-driven/>-->
+
+    <!--TODO 自定义格式化转换器-->
+    <!--开启注解驱动，加载自定义格式化转换器对应的类型转换服务-->
+    <mvc:annotation-driven conversion-service="conversionService"/>
+
+    <!--2.设定自定义Converter服务bean-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <!--3.注入所有的自定义Converter，该设定使用的是同类型覆盖的思想-->
+        <property name="converters">
+            <!--4.set保障同类型转换器仅保留一个，去重规则以Converter<S,T>的泛型为准-->
+            <set>
+                <!--5.具体的类型转换器-->
+                <bean class="com.cw.converter.MyDateConverter"/>
+            </set>
+        </property>
+    </bean>
+
+</beans>

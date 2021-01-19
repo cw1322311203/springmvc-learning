@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+
+    <!--
+        TODO 入门案例工作流程分析
+            服务器启动
+                1. 加载web.xml中DispatcherServlet
+                2. 读取spring-mvc.xml中的配置，加载所有com.cw包中所有标记为bean的类
+                3. 读取bean中方法上方标注@RequestMapping的内容
+            处理请求
+                1. DispatcherServlet配置拦截所有请求 /
+                2. 使用请求路径与所有加载的@RequestMapping的内容进行比对
+                3. 执行对应的方法
+                4. 根据方法的返回值在webapp目录中查找对应的页面并展示
+    -->
+
+    <servlet>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath*:spring-mvc.xml</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>

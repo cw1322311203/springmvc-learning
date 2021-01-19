@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.cw</groupId>
+    <artifactId>springmvc-learning</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>spring01_入门程序</module>
+        <module>spring02_基本配置</module>
+        <module>spring03_请求</module>
+        <module>spring04_response</module>
+        <module>spring05_servlet接口</module>
+        <module>spring06_test_ajax</module>
+        <module>spring07_test_interceptor</module>
+        <module>spring08_exception</module>
+        <module>spring09_fileupload</module>
+        <module>spring10_restful</module>
+        <module>spring11_validator</module>
+        <module>spring12_ssm整合</module>
+        <module>spring13_ssm整合注解版</module>
+    </modules>
+
+
+</project>
